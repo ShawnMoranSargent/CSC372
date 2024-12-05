@@ -10,8 +10,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.util.Random;
 /**
  * JavaFX App
  */
@@ -39,17 +42,16 @@ public class App extends Application {
 
         TimeInfo.setOnAction(event -> {
             Date currDate= new Date();
-            
             DateTime.setText(currDate.toString());
         });
         TextToFile.setOnAction(event -> {
             
         });
         RandGreen.setOnAction(event -> {
-            
+            Scene green = new Scene(baseLayout, 400, 100, Color.rgb(0, rand, 0, 1))
         });
         Exit.setOnAction(event -> {
-            
+            System.exit(0);
         });
         Scene scene = new Scene(baseLayout, 400,100);
         primaryStage.setScene(scene);

@@ -1,6 +1,9 @@
 package org.openjfx;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Date;
+import java.util.Random;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -8,13 +11,13 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
-import java.util.Random;
 /**
  * JavaFX App
  */
@@ -45,10 +48,17 @@ public class App extends Application {
             DateTime.setText(currDate.toString());
         });
         TextToFile.setOnAction(event -> {
-            
+            String filePath = "log.txt";
+            try (FileWriter logger = new FileWriter(filePath)){
+                logger.write(LogInput.getText());
+            } catch(IOException e){
+                System.err.println("Error: " + e.getMessage());
+            }
         });
         RandGreen.setOnAction(event -> {
-            Scene green = new Scene(baseLayout, 400, 100, Color.rgb(0, rand, 0, 1))
+            Random ran= new Random();
+            int ranGreen = ran.nextInt(255) + 1;
+            baseLayout.setBackground(new Background(new BackgroundFill(Color.rgb(0, ranGreen, 0, 1),null, null)));
         });
         Exit.setOnAction(event -> {
             System.exit(0);
@@ -56,6 +66,7 @@ public class App extends Application {
         Scene scene = new Scene(baseLayout, 400,100);
         primaryStage.setScene(scene);
         primaryStage.show();
+        
 
     }
 

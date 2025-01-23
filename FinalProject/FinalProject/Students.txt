@@ -1,0 +1,12 @@
+Student Name: Bobg
+Student Address: asdf
+Student GPA: 3.3
+
+Student Name: sahwn
+Student Address: asdf
+Student GPA: 2.3
+
+Student Name: tom
+Student Address: asdf
+Student GPA: 3.3
+
